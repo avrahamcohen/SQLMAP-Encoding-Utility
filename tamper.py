@@ -1,11 +1,6 @@
 
 #!/usr/bin/env python
 
-# Use Case: Use it when you need to find your injection point using obfuscation techniques.
-# Note: Place this file next to your sqlmap.py.
-
-# Credits: maorsa198@gmail.com.
-
 import os
 import re
 import sys
@@ -1540,5 +1535,15 @@ def encode(payload = ""):
     return payloadList
 
 if __name__ == "__main__":
-    print("SQLMAP Encoding Utility\n")
-    print("Usage: encode(payload)")
+    # Change Payload	
+    payload = "' union select user(); -- -"
+
+    f = open("find.txt", "w")
+    for item in encode(payload).items():
+        f.write(item[0] + "\n" + item[1] + "\n\n")
+    f.close()
+    
+    f = open("payloads.txt", "w")
+    for item in encode(payload).items():
+        f.write(item[1] + "\n")
+    f.close()
