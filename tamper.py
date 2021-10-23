@@ -4,7 +4,7 @@
 # Use Case: Use it when you need to find your injection point using obfuscation techniques.
 # Note: Place this file next to your sqlmap.py.
 
-# Credits: maorsabag@gmail.com.
+# Credits: maorsa198@gmail.com.
 
 import os
 import re
