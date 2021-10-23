@@ -1,6 +1,11 @@
 
 #!/usr/bin/env python
 
+# Use Case: Use it when you need to find your injection point using tamper techniques.
+# Note: Place this file next to your sqlmap.py.
+
+# Credits: maorsa198@gmail.com.
+
 import os
 import re
 import sys
