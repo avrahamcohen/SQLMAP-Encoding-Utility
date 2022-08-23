@@ -1,8 +1,8 @@
 
 #!/usr/bin/env python
 
-# Use Case: Use it when you need to find your injection point using tamper techniques.
-# Note: Place this file next to your sqlmap.py.
+# 1. Place this file under /usr/share/sqlmap
+# 2. Run: cd /usr/bin; sudo touch sqlmap_tamper; sudo chmod 777 sqlmap_tamper; sudo echo "pwd=\`pwd\`; cd /usr/share/sqlmap; python3 tamper.py \"\$1\" \$pwd" > sqlmap_tamper; sudo chmod 755 sqlmap_tamper;
 
 # Credits: maorsa198@gmail.com.
 
@@ -1541,14 +1541,15 @@ def encode(payload = ""):
 
 if __name__ == "__main__":
     # Change Payload	
-    payload = "' union select user(); -- -"
-
-    f = open("find.txt", "w")
-    for item in encode(payload).items():
-        f.write(item[0] + "\n" + item[1] + "\n\n")
-    f.close()
     
-    f = open("payloads.txt", "w")
-    for item in encode(payload).items():
-        f.write(item[1] + "\n")
-    f.close()
+    try:
+    	print("Payload: " + str(sys.argv[1]))
+    	print("Current Directory: " + str(sys.argv[2]))
+
+    	f = open(str(sys.argv[2]) + "/payloads.txt", "w")
+    	for item in encode(sys.argv[1]).items():
+    	    	f.write(item[1] + "\n")
+    	f.close()
+    except:
+    	print("Usage: \"<Payload>\"")
+    	pass
